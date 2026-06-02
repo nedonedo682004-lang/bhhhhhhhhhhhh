@@ -1132,16 +1132,14 @@ def shopify_checker_parallel():
                 "status": False
             }), 400
         
-        # التحقق من عدد الطلبات النشطة
+        # استنى لحد ما يبقى في مكان فاضي
         with _request_lock:
             current_active = _active_requests
-        
-        if current_active >= PARALLEL_WORKERS:
-            return jsonify({
-                "error": f"Server busy. {current_active}/{PARALLEL_WORKERS} active. Try later.",
-                "status": False,
-                "Response": "SERVER_BUSY"
-            }), 429
+
+        while current_active >= PARALLEL_WORKERS:
+            time.sleep(0.9)  # استنى نص ثانية
+            with _request_lock:
+                current_active = _active_requests
         
         try:
             cc_parts = parse_cc_string(cc_string)
