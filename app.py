@@ -1110,6 +1110,7 @@ def shopify_checker():
 # ═══════════════════════════════════════════════════════════════════
 @app.route('/shopify_parallel', methods=['GET'])
 def shopify_checker_parallel():
+    global _active_requests
     """
     نسخة جديدة من الـ endpoint بتشتغل بشكل متوازي
     نفس الباراميترز بالضبط لكن بتقبل أكتر من طلب في نفس الوقت
