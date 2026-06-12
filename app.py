@@ -14,7 +14,7 @@ import threading
 from functools import wraps
 
 # إعدادات المعالجة المتوازية
-PARALLEL_WORKERS = 60  # عدد الطلبات اللي تشتغل في نفس الوقت
+PARALLEL_WORKERS = 25  # عدد الطلبات اللي تشتغل في نفس الوقت
 PARALLEL_TIMEOUT = 60  # مهلة كل طلب بالثواني
 
 # إنشاء مجمع للمعالجات
